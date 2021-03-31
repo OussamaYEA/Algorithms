@@ -1,0 +1,24 @@
+def equilibre(string):
+    pile = []
+    for i in string:
+        if i in ouvrantes: #s'il y a une ouvrante on l'ajoute dans notre liste "pile"
+            pile.append(i)
+        elif i in fermantes: #s'il y a une fermante et que le nombre total d'éléments dans la pile est != 0:
+            if len(pile) !=0:
+                if i == '}' and pile[-1] == '{': # on vérifie pour chaque cas si le "i" est une fermante on pop le dernier élément de la liste
+                    pile.pop()
+                elif i == ')' and pile[-1] == '(':
+                    pile.pop()
+                elif i == ']' and pile[-1] == '[':
+                    pile.pop()
+            else:
+                pile.append('%') #on ajoute un élément quelconque dans la liste pour qu'elle ne soit pas vide et qu'il n y ait pas d'erreur
+    if len(pile) == 0:
+            return "Expression équilibrée"
+    else:
+            return "Expression non équilibrée"
+print(equilibre("{[{}{}]}[()]"))
+'''     
+    Complexité:
+Utilisation de piles donc complexité algorithmique optimale (inversion de liste) ==> O(n)
+'''
